@@ -279,9 +279,12 @@ class EmbedsMany extends EmbedsOneOrMany
      * Get a paginator for the "select" statement.
      *
      * @param  int $perPage
+     * @param array $columns
+     * @param string $pageName
+     * @param int $page
      * @return \Illuminate\Pagination\AbstractPaginator
      */
-    public function paginate($perPage = null)
+    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
     {
         $page = Paginator::resolveCurrentPage();
         $perPage = $perPage ?: $this->related->getPerPage();
